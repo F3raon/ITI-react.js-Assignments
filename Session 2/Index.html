@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+
+    <form action="" method="post">
+        <fieldset style="width: 450px; padding: 15px;">
+            <legend>Registration Form</legend>
+
+            <table cellpadding="6">
+                <tr>
+                    <td><label for="firstName">First Name:</label></td>
+                    <td><input type="text" id="firstName" name="firstName" required></td>
+                </tr>
+
+                <tr>
+                    <td><label for="lastName">Last Name:</label></td>
+                    <td><input type="text" id="lastName" name="lastName" required></td>
+                </tr>
+
+                <tr>
+                    <td><label for="userName">User Name:</label></td>
+                    <td><input type="text" id="userName" name="userName" required></td>
+                </tr>
+
+                <tr>
+                    <td><label for="password">Password:</label></td>
+                    <td><input type="password" id="password" name="password" required></td>
+                </tr>
+
+                <tr>
+                    <td><label for="confirmPassword">Confirm Password:</label></td>
+                    <td><input type="password" id="confirmPassword" name="confirmPassword" required></td>
+                </tr>
+
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="email" id="email" name="email" required></td>
+                </tr>
+
+                <tr>
+                    <td><label for="mobile">Mobile:</label></td>
+                    <td><input type="tel" id="mobile" name="mobile"></td>
+                </tr>
+
+                <tr>
+                    <td valign="top"><label>Gender:</label></td>
+                    <td>
+                        <input type="radio" id="male" name="gender" value="Male">
+                        <label for="male">Male</label>
+                        <br>
+                        <input type="radio" id="female" name="gender" value="Female">
+                        <label for="female">Female</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label for="dob">DOB:</label></td>
+                    <td><input type="date" id="dob" name="dob"></td>
+                </tr>
+
+                <tr>
+                    <td><label for="course">Course:</label></td>
+                    <td>
+                        <select id="course" name="course">
+                            <option value="">Select Course</option>
+                            <option value="react">React JS</option>
+                            <option value="html">HTML5 & CSS3</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="nodejs">Node.js</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label>Nationality:</label></td>
+                    <td>
+                        <input type="checkbox" id="indian" name="nationality" value="Indian">
+                        <label for="indian">Indian</label>
+
+                        <input type="checkbox" id="others" name="nationality" value="Others">
+                        <label for="others">Others</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td valign="top"><label for="profile">Profile:</label></td>
+                    <td>
+                        <img src="Images/profile.jpg" alt="Profile Avatar" width="100" height="100" style="display: block; margin-bottom: 8px; border-radius: 4px;">
+                        <input type="file" id="profile" name="profile">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Submit">
+                        <input type="reset" value="Reset">
+                    </td>
+                </tr>
+            </table>
+
+        </fieldset>
+    </form>
+
+</body>
+</html>
