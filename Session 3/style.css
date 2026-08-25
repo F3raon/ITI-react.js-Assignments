@@ -1,0 +1,36 @@
+
+.content-block {
+    width: 85%;
+    margin: 80px auto;
+    padding: 10px 0 25px;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.card {
+    display: inline-block;
+    width: 30%;
+    margin: 0 1.4%;
+    
+}
+
+.image-placeholder {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 15px;
+    border: 1px solid #dddddd;
+    background-color: #f8f8f8;
+}
+
+.card h2 {
+    margin: 0 0 12px;
+    font-size: 16px;
+}
+
+.card p {
+    margin: 0;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+
