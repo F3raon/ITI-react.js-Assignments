@@ -1,0 +1,718 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #0c0c0c;
+    background-color: #ffffff;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #ffbe33;
+    color: #ffffff;
+    padding: 10px 40px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #e69c00;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 190, 51, 0.4);
+}
+
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 30px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-header.align-left {
+    text-align: left;
+}
+
+.section-header h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 42px;
+    color: #222831;
+    font-weight: 700;
+}
+
+.hero-area {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+}
+
+.bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(20, 24, 33, 0.88);
+}
+
+.hero-area .container {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 25px;
+    padding-bottom: 30px;
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.brand-logo {
+    font-family: 'Dancing Script', cursive;
+    font-size: 38px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-link {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #ffbe33;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon-link {
+    color: #ffffff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.icon-link:hover {
+    color: #ffbe33;
+    transform: scale(1.15);
+}
+
+.btn-order {
+    background-color: #ffbe33;
+    color: #ffffff;
+    padding: 9px 26px;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-order:hover {
+    background-color: #e69c00;
+    transform: translateY(-2px);
+}
+
+.hero-content {
+    padding: 60px 0;
+}
+
+.hero-slide {
+    max-width: 600px;
+}
+
+.hero-slide h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 58px;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-slide p {
+    color: #ffffff;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 35px;
+}
+
+.slider-dots {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 40px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background-color: #ffbe33;
+    width: 26px;
+    border-radius: 10px;
+}
+
+.offers-section {
+    padding: 80px 0;
+}
+
+.offers-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.offer-card {
+    background-color: #222831;
+    color: #ffffff;
+    padding: 25px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    transition: all 0.3s ease;
+}
+
+.offer-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.offer-img-box {
+    width: 160px;
+    height: 160px;
+    min-width: 160px;
+    border: 5px solid #ffbe33;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.offer-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.offer-card:hover .offer-img-box img {
+    transform: scale(1.1);
+}
+
+.offer-details h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.offer-discount {
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.offer-discount span {
+    font-size: 42px;
+    font-weight: 700;
+}
+
+.menu-section {
+    padding: 70px 0;
+}
+
+.menu-filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 8px 24px;
+    border-radius: 20px;
+    font-size: 15px;
+    color: #222831;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background-color: #222831;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.food-card {
+    background-color: #222831;
+    color: #ffffff;
+    border-radius: 15px 15px 15px 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.food-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.food-img-box {
+    background-color: #f1f2f3;
+    padding: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 0 0 45px;
+    overflow: hidden;
+}
+
+.food-img-box img {
+    max-width: 140px;
+    height: 140px;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+}
+
+.food-card:hover .food-img-box img {
+    transform: scale(1.12) rotate(2deg);
+}
+
+.food-info {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.food-info h4 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.food-info p {
+    font-size: 14px;
+    color: #d1d1d1;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.food-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.cart-btn {
+    width: 42px;
+    height: 42px;
+    background-color: #ffbe33;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.cart-btn:hover {
+    background-color: #e69c00;
+    transform: scale(1.12);
+}
+
+.center-btn {
+    text-align: center;
+}
+
+.about-section {
+    background-color: #222831;
+    color: #ffffff;
+    padding: 90px 0;
+}
+
+.about-flex {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.about-img-box {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.about-img-box img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.4s ease;
+}
+
+.about-img-box:hover img {
+    transform: scale(1.03);
+}
+
+.about-content {
+    flex: 1;
+}
+
+.about-content h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 42px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.about-content p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #e5e5e5;
+    margin-bottom: 30px;
+}
+
+.book-section {
+    padding: 80px 0;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: stretch;
+}
+
+.book-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 14px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+    outline: none;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #ffbe33;
+    box-shadow: 0 0 8px rgba(255, 190, 51, 0.4);
+    transform: translateY(-1px);
+}
+
+.btn-submit {
+    align-self: flex-start;
+    padding: 12px 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.map-box {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    min-height: 350px;
+}
+
+.map-box iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+    border: 0;
+}
+
+.testimonials-section {
+    padding: 80px 0 100px;
+    background-color: #ffffff;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-bottom: 35px;
+}
+
+.testimonial-card {
+    background-color: #222831;
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 25px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-body p {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.testimonial-body h4 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.testimonial-body span {
+    font-size: 13px;
+    color: #ffbe33;
+}
+
+.client-avatar {
+    position: absolute;
+    left: 30px;
+    bottom: -30px;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: 4px solid #ffbe33;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover .client-avatar {
+    transform: scale(1.08);
+}
+
+.client-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 45px;
+}
+
+.nav-arrow {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #ffbe33;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.nav-arrow:hover {
+    background-color: #222831;
+    transform: scale(1.12);
+}
+
+.footer-section {
+    background-color: #222831;
+    color: #ffffff;
+    padding-top: 75px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+    padding-bottom: 60px;
+}
+
+.footer-col h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 15px;
+    color: #cccccc;
+    transition: color 0.3s ease;
+}
+
+.contact-info p:hover {
+    color: #ffbe33;
+}
+
+.footer-logo {
+    display: inline-block;
+    font-size: 34px;
+    margin-bottom: 15px;
+}
+
+.brand-col p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #cccccc;
+    margin-bottom: 20px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.social-icon {
+    width: 36px;
+    height: 36px;
+    background-color: #ffffff;
+    color: #222831;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: #ffbe33;
+    color: #ffffff;
+    transform: translateY(-4px) scale(1.15);
+}
+
+.hours-day {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.hours-time {
+    font-size: 15px;
+    color: #cccccc;
+}
+
+.footer-bottom {
+    border-top: 1px solid #333c48;
+    padding: 25px 0;
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 14px;
+    color: #aaaaaa;
+}
+
+@media (max-width: 992px) {
+    .offers-grid,
+    .menu-grid,
+    .book-grid,
+    .testimonials-grid,
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-flex {
+        flex-direction: column;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
