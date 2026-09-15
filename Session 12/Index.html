@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation & Events</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            padding: 30px 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            gap: 25px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #3b82f6;
+        }
+
+        h1 {
+            color: #0f172a;
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        h2 {
+            color: #1e40af;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        p, span {
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .my_span {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        #div_id {
+            background-color: #eff6ff;
+            border: 2px dashed #93c5fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        img {
+            max-width: 200px;
+            border-radius: 8px;
+            border: 2px solid #cbd5e1;
+            margin-top: 10px;
+        }
+
+        form {
+            display: grid;
+            gap: 12px;
+            max-width: 400px;
+        }
+
+        input {
+            padding: 10px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        button {
+            background-color: #3b82f6;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #2563eb;
+        }
+
+        .product, .div1 {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .product h2, .div1 h2 {
+            color: #166534;
+            font-size: 16px;
+        }
+
+        .one {
+            border: 2px solid #f59e0b !important;
+        }
+
+        .two {
+            background-color: #fef3c7 !important;
+        }
+
+        .new1 {
+            box-shadow: 0 0 10px #3b82f6;
+        }
+
+        .new2 {
+            color: #fbbf24 !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>DOM Selectors, Manipulation & Events</h1>
+            <p>Open Console (F12) to see output logs.</p>
+        </header>
+
+        <section class="card">
+            <h2>1. Element Access & Attributes</h2>
+            <div id="div_id" class="one two">
+                <span>Child Span Inside Div</span>
+                <p>Child Paragraph Inside Div</p>
+            </div>
+
+            <p class="my_span" title="paragraph title" data-src="">First Paragraph Element</p>
+            <p class="my_span">Second Paragraph Element</p>
+            <p>Third Paragraph Element</p>
+
+            <span class="my_span">Sample Span 1</span>
+            <span class="my_span">Sample Span 2</span>
+
+            <img src="https://via.placeholder.com/150" alt="Placeholder Image">
+
+            <div style="margin-top: 10px;">
+                <a href="https://google.com">Google Link</a> |
+                <a href="#">Sample Link 2</a>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>2. Interactive Buttons (Events & ClassList)</h2>
+            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                <button id="eventBtn" class="two">Test Mouse Events (Click/Hover/Right-Click)</button>
+                <button id="classBtn" class="two">Test ClassList</button>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>3. Form Validation (Submit Event)</h2>
+            <form action="#" method="post">
+                <input type="text" name="username" placeholder="Enter Username (max 15 chars)">
+                <input type="number" name="age" placeholder="Enter Age">
+                <button type="submit">Submit Form</button>
+            </form>
+        </section>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
