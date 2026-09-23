@@ -348,21 +348,31 @@ function playMovieTrailer(localId) {
   const movie = allMovies.find(m => m.localId === localId);
   if (!movie) return;
 
-  const { title, year, rating, trailer } = movie;
-  trailerModalTitle.innerHTML = `<i class="fa-solid fa-play text-warning"></i> ${title} — Trailer`;
+  const { title, year, rating } = movie;
+  const searchQuery = encodeURIComponent(`${title} ${year} official trailer`);
+  const ytSrc = `https://www.youtube.com/embed?listType=search&list=${searchQuery}&autoplay=1&rel=0`;
+
+  trailerModalTitle.innerHTML = `<i class="fa-brands fa-youtube text-danger"></i> ${title} — Trailer`;
   trailerModalMeta.textContent = `${year} • IMDb ★ ${rating || "N/A"}/10`;
 
-  trailerVideoPlayer.src = trailer;
+  const playerWrap = document.getElementById("trailerPlayerWrap");
+  if (playerWrap) {
+    playerWrap.innerHTML = `<iframe
+      src="${ytSrc}"
+      width="100%"
+      height="100%"
+      style="border:0; display:block;"
+      allow="autoplay; encrypted-media; fullscreen"
+      allowfullscreen
+    ></iframe>`;
+  }
+
   trailerModal.show();
-  trailerVideoPlayer.play().catch(() => {});
 }
 
 document.getElementById("trailerModal")?.addEventListener("hidden.bs.modal", () => {
-  if (trailerVideoPlayer) {
-    trailerVideoPlayer.pause();
-    trailerVideoPlayer.currentTime = 0;
-    trailerVideoPlayer.src = "";
-  }
+  const playerWrap = document.getElementById("trailerPlayerWrap");
+  if (playerWrap) playerWrap.innerHTML = "";
 });
 
 function openDetailsModal(localId) {
