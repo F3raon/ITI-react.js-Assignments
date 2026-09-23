@@ -2,9 +2,7 @@ const RAPIDAPI_KEY = "848002a0d7msh2ee122a1f11d4eap11833djsn3eebe6008a6d";
 const RAPIDAPI_HOST = "imdb188.p.rapidapi.com";
 const RAPIDAPI_BASE = "https://imdb188.p.rapidapi.com";
 const RAPIDAPI_ENDPOINTS = [
-  "/api/v1/getMeterMovies",
-  "/api/v1/getTop250",
-  "/api/v1/getTrending",
+  "/api/v1/getFanFavorites?country=US",
   "/api/v1/getFanFavorites"
 ];
 
@@ -49,16 +47,21 @@ function formatVotes(count) {
 
 function transformApiResponse(rawList) {
   return rawList
-    .filter(item => item.title && item.title.primaryImage)
+    .filter(item => {
+      const src = item.title || item;
+      return src.primaryImage?.imageUrl;
+    })
     .map((item, index) => {
+      const src = item.title || item;
       const {
         id,
         titleText,
         primaryImage,
         ratingsSummary,
         releaseYear,
-        titleType
-      } = item.title;
+        titleType,
+        latestTrailer
+      } = src;
 
       const title = titleText?.text || "Unknown Title";
       const poster = primaryImage?.imageUrl || "";
@@ -67,6 +70,11 @@ function transformApiResponse(rawList) {
       const topRank = ratingsSummary?.topRanking?.rank || null;
       const year = releaseYear?.year || "N/A";
       const type = titleType?.text || "Movie";
+      const trailerId = latestTrailer?.id || null;
+
+      const trailerUrl = trailerId
+        ? `https://www.imdb.com/video/${trailerId}/`
+        : TRAILER_POOL[index % TRAILER_POOL.length];
 
       return {
         id: id || `m-${index}`,
@@ -105,9 +113,9 @@ async function tryEndpoint(path) {
 function extractListFromResponse(json) {
   if (!json) return null;
   if (json.data?.list?.length) return json.data.list;
-  if (json.data?.titles?.length) return json.data.titles.map(t => ({ title: t }));
-  if (Array.isArray(json.data)) return json.data.map(t => ({ title: t }));
-  if (json.items?.length) return json.items.map(t => ({ title: t }));
+  if (json.data?.titles?.length) return json.data.titles;
+  if (Array.isArray(json.data)) return json.data;
+  if (json.items?.length) return json.items;
   return null;
 }
 
