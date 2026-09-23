@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>شاهد | المنصة العربية الأولى للأفلام والمسلسلات</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-xl fixed-top main-navbar">
+      <div class="container-fluid px-lg-5">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+          <span class="brand-logo">
+            <span class="logo-circle">
+              <i class="fa-solid fa-play"></i>
+            </span>
+            <span class="brand-text">شاهد</span>
+          </span>
+          <span class="badge vip-pill ms-1">VIP</span>
+        </a>
+
+        <button
+          class="navbar-toggler text-light border-0 shadow-none"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#shahidNav"
+          aria-controls="shahidNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fa-solid fa-bars fs-3"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="shahidNav">
+          <ul class="navbar-nav me-auto mb-2 mb-xl-0 align-items-xl-center">
+            <li class="nav-item">
+              <a class="nav-link active" data-nav="home" href="#">الرئيسية</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-nav="free" href="#free-section">مجاناً على شاهد</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-nav="series" href="#series-section">مسلسلات</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-nav="movies" href="#movies-section">أفلام</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-nav="originals" href="#vip-section">عروض أصلية</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-nav="top10" href="#top10-section">أفضل 10</a>
+            </li>
+          </ul>
+
+          <div class="d-flex align-items-center gap-3 flex-wrap mt-3 mt-xl-0">
+            <div class="search-box position-relative">
+              <i class="fa-solid fa-magnifying-glass search-icon"></i>
+              <input
+                type="text"
+                id="searchInput"
+                class="form-control search-input"
+                placeholder="ابحث عن فيلم، مسلسل، ممثل..."
+              />
+              <button id="clearSearchBtn" class="clear-btn d-none" type="button">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+
+            <button class="btn btn-vip rounded-pill px-4 py-2" id="vipSubscribeBtn">
+              <i class="fa-solid fa-crown me-1"></i>
+              اشترك في VIP
+            </button>
+
+            <div class="dropdown">
+              <button
+                class="btn profile-btn dropdown-toggle d-flex align-items-center gap-2"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <div class="avatar-box">
+                  <i class="fa-solid fa-user"></i>
+                </div>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end shadow-lg border-secondary">
+                <li><a class="dropdown-item py-2" href="#"><i class="fa-solid fa-user-circle me-2"></i> حسابي</a></li>
+                <li><a class="dropdown-item py-2" href="#"><i class="fa-solid fa-heart me-2"></i> قائمتي المفضلة</a></li>
+                <li><a class="dropdown-item py-2" href="#"><i class="fa-solid fa-gear me-2"></i> الإعدادات</a></li>
+                <li><hr class="dropdown-divider border-secondary" /></li>
+                <li><a class="dropdown-item text-danger py-2" href="#"><i class="fa-solid fa-right-from-bracket me-2"></i> تسجيل الخروج</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero-section position-relative" id="heroSection">
+      <div class="hero-backdrop" id="heroBackdrop"></div>
+      <div class="hero-overlay"></div>
+      <div class="container-fluid px-lg-5 position-relative hero-content-wrapper">
+        <div class="row align-items-center min-vh-100 pt-5">
+          <div class="col-lg-7 col-xl-6 text-light pt-5">
+            <div class="d-flex align-items-center gap-2 mb-3 flex-wrap" id="heroBadges"></div>
+            <h1 class="display-3 fw-black mb-3 hero-title" id="heroTitle"></h1>
+            <div class="d-flex align-items-center gap-3 text-secondary mb-3 fs-6 flex-wrap" id="heroMeta"></div>
+            <p class="hero-description fs-5 mb-4 lh-base" id="heroDesc"></p>
+            <div class="d-flex align-items-center gap-3 flex-wrap hero-buttons" id="heroActionButtons"></div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-indicators-bar d-flex justify-content-center align-items-center gap-2" id="heroIndicators"></div>
+    </header>
+
+    <div class="filter-pills-bar py-3 sticky-filter">
+      <div class="container-fluid px-lg-5">
+        <div class="d-flex align-items-center gap-2 overflow-x-auto no-scrollbar py-1" id="filterPillsContainer">
+          <button class="filter-pill active" data-filter="all">
+            <i class="fa-solid fa-border-all me-1"></i> الكل
+          </button>
+          <button class="filter-pill" data-filter="free">
+            <i class="fa-solid fa-unlock me-1"></i> مجاناً بدون اشتراك
+          </button>
+          <button class="filter-pill" data-filter="top10">
+            <i class="fa-solid fa-fire-flame-curved me-1"></i> الأكثر مشاهدة
+          </button>
+          <button class="filter-pill" data-filter="series">
+            <i class="fa-solid fa-tv me-1"></i> مسلسلات
+          </button>
+          <button class="filter-pill" data-filter="movies">
+            <i class="fa-solid fa-film me-1"></i> أفلام
+          </button>
+          <button class="filter-pill" data-filter="vip">
+            <i class="fa-solid fa-gem me-1"></i> أعمال VIP الحصرية
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <section id="searchResultsSection" class="search-results-section py-5 d-none">
+      <div class="container-fluid px-lg-5">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+          <h3 class="section-heading">
+            نتائج البحث عن: <span class="text-accent" id="searchKeyword"></span>
+          </h3>
+          <span class="text-secondary fs-6" id="searchCount"></span>
+        </div>
+        <div class="row g-3 g-md-4" id="searchResultsGrid"></div>
+      </div>
+    </section>
+
+    <main class="main-content py-4" id="mainContent">
+      <section class="movie-row-section mb-5" id="top10-section">
+        <div class="container-fluid px-lg-5">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <div class="d-flex align-items-center gap-2">
+              <div class="section-indicator"></div>
+              <h3 class="section-heading mb-0">أفضل 10 أعمال اليوم في مصر</h3>
+              <span class="badge bg-danger rounded-pill px-3 py-1 fs-7">الأعلى تقييماً</span>
+            </div>
+            <div class="slider-nav-btns d-flex gap-2">
+              <button class="nav-btn prev-btn" data-target="top10Slider">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+              <button class="nav-btn next-btn" data-target="top10Slider">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+            </div>
+          </div>
+          <div class="slider-wrapper position-relative">
+            <div class="movie-cards-track top10-track" id="top10Slider"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="movie-row-section mb-5" id="free-section">
+        <div class="container-fluid px-lg-5">
+          <div class="free-banner-highlight p-4 rounded-4 mb-4 d-flex flex-wrap align-items-center justify-content-between gap-3">
+            <div class="d-flex align-items-center gap-3">
+              <div class="free-icon-circle">
+                <i class="fa-solid fa-circle-play"></i>
+              </div>
+              <div>
+                <h4 class="mb-1 text-light fw-bold">عروض مجانية بالكامل</h4>
+                <p class="mb-0 text-white-50 fs-6">شاهد الآن فوراً بجودة فائقة وبدون أي اشتراك أو تسجيل دخول</p>
+              </div>
+            </div>
+            <span class="badge badge-free-lg px-4 py-2 fs-6">
+              <i class="fa-solid fa-gift me-1"></i> مجاني 100%
+            </span>
+          </div>
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <div class="d-flex align-items-center gap-2">
+              <div class="section-indicator bg-accent"></div>
+              <h3 class="section-heading mb-0">أفلام ومسلسلات مجانية الآن</h3>
+            </div>
+            <div class="slider-nav-btns d-flex gap-2">
+              <button class="nav-btn prev-btn" data-target="freeSlider">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+              <button class="nav-btn next-btn" data-target="freeSlider">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+            </div>
+          </div>
+          <div class="slider-wrapper position-relative">
+            <div class="movie-cards-track" id="freeSlider"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="movie-row-section mb-5" id="vip-section">
+        <div class="container-fluid px-lg-5">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <div class="d-flex align-items-center gap-2">
+              <div class="section-indicator bg-warning"></div>
+              <h3 class="section-heading mb-0">عروض وأفلام VIP الحصرية</h3>
+              <span class="badge bg-warning text-dark fw-bold rounded-pill px-3 py-1 fs-7">SHAHID ORIGINALS</span>
+            </div>
+            <div class="slider-nav-btns d-flex gap-2">
+              <button class="nav-btn prev-btn" data-target="vipSlider">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+              <button class="nav-btn next-btn" data-target="vipSlider">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+            </div>
+          </div>
+          <div class="slider-wrapper position-relative">
+            <div class="movie-cards-track" id="vipSlider"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="movie-row-section mb-5" id="series-section">
+        <div class="container-fluid px-lg-5">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <div class="d-flex align-items-center gap-2">
+              <div class="section-indicator"></div>
+              <h3 class="section-heading mb-0">المسلسلات الرائجة</h3>
+            </div>
+            <div class="slider-nav-btns d-flex gap-2">
+              <button class="nav-btn prev-btn" data-target="seriesSlider">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+              <button class="nav-btn next-btn" data-target="seriesSlider">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+            </div>
+          </div>
+          <div class="slider-wrapper position-relative">
+            <div class="movie-cards-track" id="seriesSlider"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="movie-row-section mb-5" id="movies-section">
+        <div class="container-fluid px-lg-5">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <div class="d-flex align-items-center gap-2">
+              <div class="section-indicator"></div>
+              <h3 class="section-heading mb-0">أفلام عربية وعالمية مختارة</h3>
+            </div>
+            <div class="slider-nav-btns d-flex gap-2">
+              <button class="nav-btn prev-btn" data-target="moviesSlider">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+              <button class="nav-btn next-btn" data-target="moviesSlider">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+            </div>
+          </div>
+          <div class="slider-wrapper position-relative">
+            <div class="movie-cards-track" id="moviesSlider"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="promo-banner-section my-5">
+        <div class="container-fluid px-lg-5">
+          <div class="promo-card rounded-5 p-4 p-lg-5 position-relative overflow-hidden">
+            <div class="row align-items-center position-relative z-2">
+              <div class="col-lg-7 text-light">
+                <span class="badge vip-pill mb-3 px-3 py-2 fs-6">شاهد VIP</span>
+                <h2 class="display-5 fw-bold mb-3">عالم لا ينتهي من الترفيه بلا فواصل إعلانية</h2>
+                <p class="fs-5 text-white-50 mb-4 lh-base">
+                  استمتع بآلاف الساعات من المسلسلات الحصرية، عروض البث المباشر وقنوات التلفاز، أحدث أفلام السينما وأعمال ديزني ومارفل بدقة 4K فائقة الوضوح.
+                </p>
+                <div class="d-flex align-items-center gap-3 flex-wrap">
+                  <button class="btn btn-vip rounded-pill px-4 py-3 fw-bold fs-5" id="promoSubscribeBtn">
+                    ابدأ تجربتك المجانية
+                  </button>
+                  <span class="text-white-50 fs-6">إلغاء الاشتراك في أي وقت</span>
+                </div>
+              </div>
+              <div class="col-lg-5 mt-4 mt-lg-0 text-center">
+                <div class="devices-mockup">
+                  <i class="fa-solid fa-tv display-1 text-accent opacity-75 me-3"></i>
+                  <i class="fa-solid fa-mobile-screen display-2 text-warning opacity-75 me-3"></i>
+                  <i class="fa-solid fa-laptop display-1 text-light opacity-75"></i>
+                </div>
+              </div>
+            </div>
+            <div class="promo-glow"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal fade" id="videoPlayerModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content bg-dark border-secondary rounded-4 overflow-hidden text-light">
+          <div class="modal-header border-bottom border-secondary bg-black py-2 px-3 d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+              <span class="badge bg-success" id="playerTypeBadge">مجاني</span>
+              <h5 class="modal-title fs-5 mb-0 fw-bold" id="playerMovieTitle">مشغل الفيديو</h5>
+              <span class="badge bg-secondary" id="playerQualityBadge">HD 1080p</span>
+            </div>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              id="closePlayerBtn"
+            ></button>
+          </div>
+          <div class="modal-body p-0 bg-black">
+            <div class="ratio ratio-16x9 position-relative bg-black">
+              <video id="shahidVideoPlayer" controls autoplay playsinline class="w-100 h-100 bg-black"></video>
+            </div>
+            <div class="p-4 bg-dark-alt">
+              <div class="d-flex align-items-start justify-content-between gap-3 flex-wrap mb-3">
+                <div>
+                  <h4 class="fw-bold mb-1" id="playerInfoTitle"></h4>
+                  <p class="text-white-50 mb-0 fs-6" id="playerInfoGenre"></p>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                  <button class="btn btn-outline-light rounded-pill px-3 py-1 btn-sm" id="playerLikeBtn">
+                    <i class="fa-regular fa-thumbs-up me-1"></i> أعجبني
+                  </button>
+                  <button class="btn btn-outline-light rounded-pill px-3 py-1 btn-sm" id="playerAddListBtn">
+                    <i class="fa-solid fa-plus me-1"></i> قائمتي
+                  </button>
+                  <button class="btn btn-outline-light rounded-pill px-3 py-1 btn-sm" id="playerShareBtn">
+                    <i class="fa-solid fa-share-nodes me-1"></i> مشاركة
+                  </button>
+                </div>
+              </div>
+              <p class="text-light-50 fs-6 mb-3 lh-base" id="playerInfoDesc"></p>
+              <div class="d-flex align-items-center gap-4 text-secondary fs-7 border-top border-secondary pt-3">
+                <span id="playerInfoYear"></span>
+                <span id="playerInfoRating"></span>
+                <span id="playerInfoDuration"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="movieDetailsModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-dark border-secondary rounded-4 overflow-hidden text-light">
+          <div class="modal-body p-0 position-relative">
+            <button
+              type="button"
+              class="btn-close btn-close-white position-absolute top-0 end-0 m-3 z-3 bg-dark p-2 rounded-circle"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+            <div class="details-modal-backdrop position-relative" id="modalBackdrop">
+              <div class="details-modal-overlay"></div>
+              <div class="details-modal-content p-4 p-md-5 position-relative z-2">
+                <div class="d-flex align-items-center gap-2 mb-2" id="modalBadges"></div>
+                <h2 class="display-6 fw-bold mb-2" id="modalTitle"></h2>
+                <div class="d-flex align-items-center gap-3 text-secondary mb-3 fs-6" id="modalMeta"></div>
+                <div class="d-flex align-items-center gap-3 mb-4" id="modalActions"></div>
+                <p class="fs-6 text-light-50 lh-base mb-4" id="modalDesc"></p>
+                <div class="cast-section">
+                  <h6 class="text-secondary mb-2">طاقم العمل والبطولة:</h6>
+                  <div class="d-flex flex-wrap gap-2" id="modalCast"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="vipPromoModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark border-warning rounded-4 text-light p-4 text-center">
+          <div class="modal-body">
+            <div class="vip-crown-icon mb-3">
+              <i class="fa-solid fa-crown display-3 text-warning"></i>
+            </div>
+            <h3 class="fw-bold text-light mb-2">محتوى حصري لمشتركي VIP</h3>
+            <p class="text-white-50 mb-4">
+              هذا الفيلم متاح فقط عبر باقة شاهد VIP. اشترك الآن واستمتع بمشاهدة غير محدودة وبدون إعلانات.
+            </p>
+            <div class="pricing-badge bg-black p-3 rounded-3 mb-4 border border-secondary">
+              <span class="text-secondary fs-7 d-block">يبدأ من</span>
+              <span class="fs-4 fw-bold text-accent">49.99 ج.م / شهرياً</span>
+              <span class="text-secondary fs-7 d-block">شامل تجربة مجانية لمدة 7 أيام</span>
+            </div>
+            <div class="d-grid gap-2">
+              <button class="btn btn-vip py-3 fw-bold rounded-pill fs-5" data-bs-dismiss="modal">
+                اشترك الآن وجرب مجاناً
+              </button>
+              <button class="btn btn-outline-secondary py-2 rounded-pill" data-bs-dismiss="modal">
+                تصفح العروض المجانية
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-container position-fixed bottom-0 start-0 p-3 z-3">
+      <div id="shahidToast" class="toast bg-dark text-light border-accent rounded-3" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex align-items-center justify-content-between p-3">
+          <div class="toast-body p-0 d-flex align-items-center gap-2">
+            <i class="fa-solid fa-circle-check text-accent fs-5"></i>
+            <span id="toastMessage" class="fw-semibold">تمت الإضافة إلى قائمتي</span>
+          </div>
+          <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="main-footer pt-5 pb-4 bg-black text-white-50 border-top border-secondary">
+      <div class="container-fluid px-lg-5">
+        <div class="row g-4 mb-5">
+          <div class="col-lg-4">
+            <div class="d-flex align-items-center gap-2 mb-3">
+              <span class="logo-circle">
+                <i class="fa-solid fa-play"></i>
+              </span>
+              <span class="brand-text fs-3 fw-bold text-light">شاهد</span>
+              <span class="badge vip-pill">VIP</span>
+            </div>
+            <p class="lh-lg mb-4 text-white-50">
+              المنصة العربية الأولى الرائدة لتقديم أحدث المسلسلات، الأفلام، البرامج التلفزيونية والبث المباشر لأهم القنوات الرياضية والترفيهية في الشرق الأوسط وشمال أفريقيا.
+            </p>
+            <div class="d-flex align-items-center gap-3">
+              <a href="#" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" class="social-link"><i class="fa-brands fa-youtube"></i></a>
+              <a href="#" class="social-link"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-2">
+            <h6 class="text-light fw-bold mb-3">تصفح شاهد</h6>
+            <ul class="list-unstyled lh-lg">
+              <li><a href="#free-section" class="footer-link">عروض مجانية</a></li>
+              <li><a href="#series-section" class="footer-link">مسلسلات عربي</a></li>
+              <li><a href="#movies-section" class="footer-link">أفلام سينما</a></li>
+              <li><a href="#vip-section" class="footer-link">عروض أصلية</a></li>
+              <li><a href="#" class="footer-link">قنوات البث المباشر</a></li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-2">
+            <h6 class="text-light fw-bold mb-3">عن الخدمة</h6>
+            <ul class="list-unstyled lh-lg">
+              <li><a href="#" class="footer-link">من نحن</a></li>
+              <li><a href="#" class="footer-link">باقات واشتراكات VIP</a></li>
+              <li><a href="#" class="footer-link">طرق الدفع</a></li>
+              <li><a href="#" class="footer-link">الأجهزة المدعومة</a></li>
+              <li><a href="#" class="footer-link">وظائف شاغرة</a></li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-2">
+            <h6 class="text-light fw-bold mb-3">المساعدة والدعم</h6>
+            <ul class="list-unstyled lh-lg">
+              <li><a href="#" class="footer-link">مركز المساعدة</a></li>
+              <li><a href="#" class="footer-link">الأسئلة الشائعة</a></li>
+              <li><a href="#" class="footer-link">اتصل بنا</a></li>
+              <li><a href="#" class="footer-link">شروط الاستخدام</a></li>
+              <li><a href="#" class="footer-link">سياسة الخصوصية</a></li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-2">
+            <h6 class="text-light fw-bold mb-3">حمّل التطبيق</h6>
+            <div class="d-flex flex-column gap-2">
+              <a href="#" class="btn btn-outline-secondary text-light btn-sm text-start rounded-3 d-flex align-items-center gap-2">
+                <i class="fa-brands fa-apple fs-4"></i>
+                <div>
+                  <span class="d-block text-secondary fs-8">متوفر على</span>
+                  <span class="fw-bold">App Store</span>
+                </div>
+              </a>
+              <a href="#" class="btn btn-outline-secondary text-light btn-sm text-start rounded-3 d-flex align-items-center gap-2">
+                <i class="fa-brands fa-google-play fs-4"></i>
+                <div>
+                  <span class="d-block text-secondary fs-8">احصل عليه من</span>
+                  <span class="fw-bold">Google Play</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex flex-wrap justify-content-between align-items-center pt-4 border-top border-secondary text-secondary fs-7">
+          <p class="mb-0">&copy; 2026 مجموعة MBC - جميع الحقوق محفوظة لمنصة شاهد.</p>
+          <div class="d-flex gap-3">
+            <span>تشفير آمن 100%</span>
+            <span>جودة 4K Ultra HD</span>
+            <span>بدون فواصل إعلانية</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
