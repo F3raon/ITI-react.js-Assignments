@@ -1,6 +1,12 @@
 const RAPIDAPI_KEY = "848002a0d7msh2ee122a1f11d4eap11833djsn3eebe6008a6d";
 const RAPIDAPI_HOST = "imdb188.p.rapidapi.com";
 const RAPIDAPI_BASE = "https://imdb188.p.rapidapi.com";
+const RAPIDAPI_ENDPOINTS = [
+  "/api/v1/getMeterMovies",
+  "/api/v1/getTop250",
+  "/api/v1/getTrending",
+  "/api/v1/getFanFavorites"
+];
 
 const TRAILER_POOL = [
   "https://vjs.zencdn.net/v/oceans.mp4",
@@ -84,37 +90,55 @@ function transformApiResponse(rawList) {
     });
 }
 
+async function tryEndpoint(path) {
+  const res = await fetch(`${RAPIDAPI_BASE}${path}`, {
+    method: "GET",
+    headers: {
+      "x-rapidapi-key": RAPIDAPI_KEY,
+      "x-rapidapi-host": RAPIDAPI_HOST
+    }
+  });
+  if (!res.ok) throw new Error(`${res.status}`);
+  return res.json();
+}
+
+function extractListFromResponse(json) {
+  if (!json) return null;
+  if (json.data?.list?.length) return json.data.list;
+  if (json.data?.titles?.length) return json.data.titles.map(t => ({ title: t }));
+  if (Array.isArray(json.data)) return json.data.map(t => ({ title: t }));
+  if (json.items?.length) return json.items.map(t => ({ title: t }));
+  return null;
+}
+
 async function fetchMovies() {
   if (moviesLoading) moviesLoading.style.display = "flex";
   if (moviesGrid) moviesGrid.innerHTML = "";
 
-  try {
-    const response = await fetch(`${RAPIDAPI_BASE}/v1/getMeterMovies`, {
-      method: "GET",
-      headers: {
-        "x-rapidapi-key": RAPIDAPI_KEY,
-        "x-rapidapi-host": RAPIDAPI_HOST
+  let lastError = null;
+
+  for (const endpoint of RAPIDAPI_ENDPOINTS) {
+    try {
+      const json = await tryEndpoint(endpoint);
+      const list = extractListFromResponse(json);
+
+      if (list && list.length > 0) {
+        allMovies = transformApiResponse(list);
+        break;
       }
-    });
-
-    if (!response.ok) throw new Error(`API Error ${response.status}`);
-    
-    const json = await response.json();
-
-    if (json.status && json.data && json.data.list) {
-      allMovies = transformApiResponse(json.data.list);
-    } else {
-      throw new Error("Unexpected API response format");
+    } catch (err) {
+      lastError = err;
     }
+  }
 
-  } catch (err) {
+  if (allMovies.length === 0) {
     if (moviesLoading) moviesLoading.style.display = "none";
     if (moviesGrid) {
       moviesGrid.innerHTML = `
         <div class="col-12 text-center py-5">
           <i class="fa-solid fa-triangle-exclamation text-warning display-4 mb-3"></i>
           <h4 class="text-white">Unable to load data from IMDb API</h4>
-          <p class="text-muted small mb-3">Error: ${err.message}</p>
+          <p class="text-muted small mb-3">All endpoints returned an error (${lastError?.message || "Unknown"}).<br>Check your RapidAPI key or subscription.</p>
           <button class="btn btn-imdb-gold btn-sm" onclick="fetchMovies()">
             <i class="fa-solid fa-rotate-right me-1"></i> Retry
           </button>
